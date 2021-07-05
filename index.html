@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>TUAS_LINE18设备转移</title>
+    <meta name="description" content="TUAS_LINE18 IQ">
+    <meta name="Keywords" content="TUAS_LINE18 IQ">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+        <!-- 输入密码才可以打开网页 -->
+    <!-- <script language="JavaScript">
+        var password="";
+        password=prompt('You need password to view this page:','input your password');
+        if (password != '0302')   
+        {
+            alert("password incorrect!!");    
+            window.opener=null; 
+            window.close();
+        }  // 密码不正确就关闭//
+    </script> -->
+</head>
+<body>
+   <h4 class="mainTitle">TUAS_LINE18设备IQ问题汇总</h4>
+   <p class="time">2021/06/01-2021/06/30</p>
+   <!-- 1，问题汇总 -->
+   <div class="project_description">
+        <p class="second_title" id="main_list">一、问题目录</p>
+        <ul class="project_des">
+            <li><a href="#no1">1,Final ASSY和中间端部分安全门缺失</a></li>
+            <li><a href="#no2">2,针尖视觉PC主机无法开机</a></li>
+            <li><a href="#no3">3,Final ASSY "Side_Seal_Outer_Servo"报警</a></li>
+            <li><a href="#no4">4,OverHead Message Display无法显示具体的报警信息</a></li>
+            <li><a href="#no5">5,Lube Cart流量计2无法显示流量</a></li>
+            <li><a href="#no6">6,校验问题</a></li>
+        </ul>
+   </div>
+   <!-- 2，问题明细 --> 
+   <div class="project_execute">
+    <p class="second_title">二、问题明细及解决办法</p>
+    <ul class="step">
+        <!-- 问题1 -->
+        <li id="no1">
+            <p>1,Final ASSY和中间端部分安全门缺失 <a href="#main_list">《返回主页》</a></p>
+            <hr>
+            <p>■问题描述:</p>
+            <p>在LINE18主体拼装好后，发现部分安全门缺失。在组装、注塑货柜全部开启并安装后，依旧没能找到缺失的门板（5块安全门板），Team都没有印象门板去哪里了！
+                甚至花费了大力气，将包装的木箱子移开，自己开了好几个箱子也没能找到！！😓</p>
+            <p>■解决办法:</p>
+            <p>找了供应商现场测量（JML）,准备重新做，还得买安全锁！但始终想不明白门板丢到哪里了，后来缓了几天，因为商检需求，包装还的还箱。周末顺达拆了包装的箱子，最终在包装的箱子里找到了门板！</p>
+            <p>■经验教训：</p>
+            <p class="redColor">TUAS打包时，做的还是不够细致！并没有做到每个Pallet里面货物的详细记录、照片！导致走了弯路！</p>
+        </li>
+        <!-- 问题2 -->
+        <li id="no2">
+            <p>2,针尖视觉PC主机无法开机<a href="#main_list">《返回主页》</a></p>
+            <hr>
+            <p>■问题描述:</p>
+            <p>针尖视觉电脑主机运行中，自己突然关机，无法开机！经检测，电源直接无输出。</p>
+            <p>■解决办法:</p>
+            <p>送修，顾工：15850121109。打开🖥、电源，发现里面有类似润滑油。可能是因为润滑油导致短路！
+                外修花费4天（供应商买备件）。后来询问了TUAS，UV烘箱站表面有很多油污的由来。
+                Jack告知，那边曾经因为点胶站排废胶水罐子满了，胶水被负压抽到了真空管路，导致到处都是胶水，所以雾化的胶水通过，电柜排风扇进入电柜！</p>
+            <p>■经验教训：</p>
+            <p class="redColor">尽量考虑、避免，现场的各种不同管路串通！</p>
+        </li>
+        <!-- 问题3 -->
+        <li id="no3">
+            <p>3,Final ASSY "Side_Seal_Outer_Servo"报警<a href="#main_list">《返回主页》</a></p>
+            <hr>
+            <p>■问题描述:</p>
+            <p>设备上电后，发现后端外侧密封伺服报警！程序里显示感叹号！且从模块属性-"module info"，显示严重故障！无法复位！此问题困扰很久，
+                前后差不多2周，联系了AB好几波人，最后在自己的反复测试中解决！😓
+            </p>
+            <p>■解决办法:</p>
+            <p>①，查看了伺服显示报错"INIT FLT M21",查询了手册该代码代表"Factory Configuration error"。于是更换了同型号的驱动器
+                2094-EN02D-M01-S0,通过BootP更改其IP地址与原地址一致。</p>
+            <p> ②，更换驱动器后，上电。在studio5000程序里，对应伺服模块属性，module标识显示“不匹配”，有报错"物理module与项目里配置的module不一致"！
+            </p>
+            <img src="image/1.JPG" alt="" width="48%">
+            <img src="image/2.JPG" alt="" width="48%">
+            <p>检查发现新换的驱动器版本为3.1，而程序里组态配置的是2.6！最让人疑惑的是，程序里主版本只有1和2可选，没有3版本！即时重新创建，也是如此。
+                如下图，</p>
+            <img src="image/3.PNG" alt="" width="98%">
+            <p>不明所以，而且这个是和电子密钥没有半毛钱关系的。当时，相关支持说禁用密钥，压根不顶用！无意间发现，在另外一台电脑上（WXX）上新建模块时，
+                可以选主版本3，奇怪😓！都是购买的正版软件，怎么会这样！
+            </p>
+            <p>后来还是电话咨询慧桥倪工，其提到这个硬件主版本需要在rockwell官网上下载（需登录）AOP "Add-On-Profile",如下图，
+            </p>
+            <img src="image/4.PNG" alt="" width="98%">
+            <p>注意：我们要下载的是AOP文件，当然确切的说是2094-EN02D-M01-S0的AOP。但是如果你直接搜索2094**，会出现如下界面，这样实际上
+                你只是下载了一个firmware固件，而并非我们想要的AOP文件！
+            </p>
+            <img src="image/5.PNG" alt="" width="48%">
+            <img src="image/6.PNG" alt="" width="48%">
+            <p>建议做法是：点击“Add-On_Profile”进入新界面后，直接点击搜索按钮。然后选择如图第二项，再在右侧下载按钮点击后，选择对应的AOP文件。
+            </p>
+            <img src="image/7.PNG" alt="" width="48%">
+            <img src="image/8.PNG" alt="" width="48%">
+            <p>之后点击"Download Now"</p>
+            <img src="image/9.PNG" alt="" width="98%">
+            <p>下载过程简单，官网默认先下载download Manager文件，然后打开Download Manager文件，即可自动下载。下载完成后，解压文件，打开
+                文件夹，安装即可（安装时需要将AB相关软件关闭，RSLinx,Studio）
+            </p>
+            <img src="image/10.PNG" alt="" width="98%">
+            <p>安装完成，再次打开studio软件，发现伺服属性里面，主版本就多了3版本可选！😊🤩</p>
+            <p>③，本以为大功告成，没想到.....再将版本程序配置里也改成3.1后，<span class="redColor">不匹配问题</span> 是解决了。但是发现该伺服还是
+            不能回原点，不动啊！经过对比发现，该伺服状态在"program mode",而别人在"run mode";该伺服驱动器"S04" Configuration not Configured报警！</p>
+            <img src="image/11.JPG" alt="" width="40%">
+            <img src="image/12.JPG" alt="" width="28%">
+            <img src="image/13.JPG" alt="" width="28%">
+            <p>④，根据提示，以及慧桥技术人员的沟通，以及通过远程协助，需要做电机的"Tune才能解决次问题"。可是Tune就是不动，期间慧桥
+                曾将"Motor Catalog"改为none,download过一次程序，之后又改回原参数再次download。折腾一番，之后设备断电在上电时，伺服
+            确实动了一下，但是立马到极限报警了（像里侧顶死）！<span class="redColor">感觉这一步，似乎不是必要的。</span>后来慧桥建议，将2个电机线对调，Oh,my God😓。
+        思索再三，我还是没有那样尝试...</p>
+                <img src="image/14.JPG" alt="" width="48%">
+                <img src="image/15.JPG" alt="" width="48%">
+            <p>⑤，考虑之前上下伺服回不了原点，直接触碰一下原点sensor的问题。当时房置了一个小金属片在外侧伺服原点sensor上，关门复位，终于动啦，
+                往外侧动啦，可是直接又外侧顶死😓...不能停在中间位置（我们的目标是将其停在大概中间位置，因为其在tune时，会走一定距离，避免极限），
+                如果走一半，立马开门，停是停了，但是不关门，伺服因为安全又报警，无法"Tune",而关上门，复位报警时，伺服还是会走到极限😭！
+            </p>
+            <p>⑥，查询程序，是因为伺服每次使能自动回原点导致以上问题。所以本次在伺服位置（外烫头）走到差不多中间时，拉门，
+                然后在程序里屏蔽”自动回原点功能“。屏蔽后，再关门，复位，伺服不在动作。</p>
+            <p>⑦，但是，此时发现"Tune"操作按钮是灰色的，无法操作。后来才知道，这是因为伺服的状态不在"stopped"状态且没有报警，所以无法操作！
+                但是，肯定不能开门的，因为开门，安全还是会出发伺服报警，报警状态也是不能执行"Tune"操作的！
+            </p>
+            <p>⑧，此时在程序 "Motion Group"里面，点击该伺服轴选择 Motion Direct Commands,执行MAS指令，将其停止，如下图
+            </p>
+            <img src="image/16.PNG" alt="" width="98%">
+            <p>⑨，此刻，终于可以正常tune了，自动tune完成后，需要测试一下方向Polarity。点击Test Polarity后，执行后，系统会提示你当前的方向，自己选择即可。
+                实际测试下来，LINE18 side seal outer servo像外打开时，方向是"Reverse"。接受测试结果。由于是自动tune，不需要担心参数有什么变更！
+            </p>
+            <img src="image/17.PNG" alt="" width="98%">
+            <p>⑩，终于，报警"Communication not configured"消除了，伺服也可以正常回原点了开心😃。
+            </p>
+            <p>经此一役，在此区分几个概念：EDS,当软件里硬件图片前面显示？时，可能是对应硬件的EDS缺失，EDS缺失只是表面rockwell软件 "不认识"该硬件，
+                但是不影响使用。固件（Firmware),我的理解，firmware时出厂时该硬件的一个软件版本，可以通过ControlFlash更新固件，固件还是到官网对应下载。
+                AOP(Add-On-Profile),此次受此困扰。我的理解类似是rockwell软件的补丁包，却什么补什么。
+            </p>
+            <p>■经验教训：</p>
+            <p class="redColor">伺服控制，还是自己技术上瓶颈！不了解！</p>
+        </li>
+        <!-- 问题4 -->
+        <li id="no4">
+            <p>4,OverHead Message Display无法显示具体的报警信息<a href="#main_list">《返回主页》</a></p>
+            <hr>
+            <p>■问题描述:</p>
+            <p>从TUAS转移过来的4个LED报警显示屏，无法显示具体报警信息，只能显示MES Code码</p>
+            <p>■解决办法:</p>
+            <p>未能找到原因，不过经过测试现有的报警显示软件studio在通讯里配置IP地址和变量后是可以直接获取当前PLC的报警code的。Very Great!
+                这里，当时自己还想复杂了，多亏WXX提醒。</p>
+            <p>后续直接安装2个电视，类似与LINE22 & 23显示报警。并且中英文可切换</p>
+            <p>■经验教训：</p>
+            <p class="redColor">遇事，思考，尝试！</p>
+        </li>
+         <!-- 问题5 -->
+         <li id="no5">
+            <p>5,Lube Cart流量计2无法显示流量<a href="#main_list">《返回主页》</a></p>
+            <hr>
+            <p>■问题描述:</p>
+            <p>其中1个流量计无法显示流量，显示0Ml/Min</p>
+            <p>■解决办法:</p>
+            <p>反复拆装流量计，更换齿轮，更换sensor都不好！最后还是在反复拆装中，显示了流量！最终没整明白原因...</p>
+            <p>■经验教训：</p>
+            <p class="redColor">这里在判断哪个sensor不好时，开始方向是跑偏了！有时，我们单看一个问题，可以避免干扰！</p>
+        </li>
+         <!-- 问题6 -->
+         <li id="no6">
+            <p>6,校验问题<a href="#main_list">《返回主页》</a></p>
+            <hr>
+            <p>■问题描述:</p>
+            <p>检验时，流量计不合格，压力表坏，压力表报警值设置</p>
+            <p>■解决办法:</p>
+            <p>流量计，基于实测值矫正K值</p>
+            <p>压力表，同时按上下键，归零；长按S键进行设置，如果出现"F*"，则F0为单位设置，F1为显示颜色、上下限、极性设置；
+                如果不出现"F*"，则也是在该界面可以依次设置颜色、上下限、极性等设置</p>
+            <p>■经验教训：</p>
+            <p class="redColor">校验方法不了解，出现问题时，没有第一时间想到解决办法！K值？</p>
+        </li>
+    </ul>
+    <p>跌跌撞撞，勉强在到期前完成IQ，总的来说自己的计划还是待提升。往后续验证顺利。</p>
+   </div>
+   <!-- 结尾 -->
+   <footer>
+       <p>Kevin Liu</p>
+       <p>2021-07-05</p>
+   </footer>
+</div>
+</body>
+</html>
